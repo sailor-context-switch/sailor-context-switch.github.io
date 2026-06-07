@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Sail and Isla ecosystems | Sailor</title>
+    <link rel="icon" href="../assets/sailor-logo.png" type="image/png">
+    <link rel="stylesheet" href="../styles.css">
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="navbar" aria-label="Primary navigation">
+        <a class="brand" href="../index.html" aria-label="Sailor home">
+          <img src="../assets/sailor-logo.png" alt="" aria-hidden="true">
+          <span>Sailor</span>
+        </a>
+        <div class="nav-links">
+          <a href="../index.html">Home</a>
+          <a aria-current="page" href="../blog.html">Blog</a>
+          <a href="../documentation.html">Documentation</a>
+          <a href="../team.html">Team</a>
+        </div>
+      </nav>
+    </header>
+
+    <main class="subpage article-layout">
+      <article class="blog-post">
+        <a class="back-link" href="../blog.html">Back to blog</a>
+        <div class="post-meta">
+          <span>Neelu S. Kalani</span>
+          <time datetime="2026-05-12">May 12, 2026</time>
+        </div>
+        <h1>Sail and Isla ecosystems</h1>
+        <p>
+          Sailor depends on a useful shift in how hardware behavior is described:
+          architecture specifications can be written as executable models rather
+          than only as prose. Sail is a language for writing those ISA models, so
+          the semantics of registers, instructions, and privilege behavior can be
+          inspected by tools.
+        </p>
+        <p>
+          Isla complements that by symbolically executing Sail models. Instead
+          of running one concrete instruction instance, symbolic execution can
+          explore how instruction behavior depends on conditions and state. For
+          context switching, that matters because the question is not just which
+          state is visible, but which state can be read or modified by the ISA
+          under relevant execution paths.
+        </p>
+
+        <figure class="switch-figure">
+          <svg viewBox="0 0 920 230" role="img" aria-labelledby="ecosystem-figure-title ecosystem-figure-desc">
+            <title id="ecosystem-figure-title">Sailor in the Sail and Isla ecosystem</title>
+            <desc id="ecosystem-figure-desc">A diagram showing Sail ISA specifications feeding Isla symbolic execution and Sailor analysis.</desc>
+            <defs>
+              <marker id="arrow" markerHeight="8" markerWidth="8" orient="auto" refX="7" refY="4">
+                <path d="M0,0 L8,4 L0,8 Z" fill="#5c6678"></path>
+              </marker>
+            </defs>
+            <text x="460" y="34" class="figure-heading" text-anchor="middle">The ecosystem Sailor builds on</text>
+            <rect x="52" y="78" width="816" height="100" rx="8" class="figure-panel"></rect>
+            <rect x="92" y="104" width="170" height="54" rx="6" class="model-box"></rect>
+            <text x="177" y="127" text-anchor="middle">Sail ISA</text>
+            <text x="177" y="145" text-anchor="middle">specification</text>
+            <line x1="262" y1="131" x2="342" y2="131" class="figure-arrow"></line>
+            <rect x="342" y="104" width="170" height="54" rx="6" class="model-box"></rect>
+            <text x="427" y="127" text-anchor="middle">Isla symbolic</text>
+            <text x="427" y="145" text-anchor="middle">execution</text>
+            <line x1="512" y1="131" x2="592" y2="131" class="figure-arrow"></line>
+            <rect x="592" y="104" width="236" height="54" rx="6" class="state-box"></rect>
+            <text x="710" y="127" text-anchor="middle">Sailor context-switch</text>
+            <text x="710" y="145" text-anchor="middle">state analysis</text>
+            <text x="460" y="207" class="figure-note" text-anchor="middle">Executable specifications turn architecture details into data that security tooling can use.</text>
+          </svg>
+          <figcaption>Sailor is not a replacement for Sail or Isla; it is an analysis built on the structure they provide.</figcaption>
+        </figure>
+
+        <p>
+          This separation is powerful. Sail captures architectural intent, Isla
+          collects behavior from that model, and Sailor asks a security-specific
+          question over the collected data: what must a context switch preserve
+          so that one context cannot inherit, corrupt, or learn state from
+          another?
+        </p>
+        <p>
+          The result is a workflow that scales better than hand-reading ISA
+          manuals. As architectures evolve and extensions add state, the same
+          ecosystem can be reused to re-check whether privileged software still
+          saves what must be saved.
+        </p>
+      </article>
+    </main>
+
+    <footer class="site-footer">
+      <p>&copy; Neelu S. Kalani</p>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Blog | Sailor</title>
+    <link rel="icon" href="assets/sailor-logo.png" type="image/png">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="navbar" aria-label="Primary navigation">
+        <a class="brand" href="index.html" aria-label="Sailor home">
+          <img src="assets/sailor-logo.png" alt="" aria-hidden="true">
+          <span>Sailor</span>
+        </a>
+        <div class="nav-links">
+          <a href="index.html">Home</a>
+          <a aria-current="page" href="blog.html">Blog</a>
+          <a href="documentation.html">Documentation</a>
+          <a href="team.html">Team</a>
+        </div>
+      </nav>
+    </header>
+
+    <main class="subpage">
+      <section class="page-intro">
+        <p class="section-kicker page-label">Sailor Blog</p>
+      </section>
+
+      <section class="blog-list" aria-label="Blog posts">
+        <article class="post-card">
+          <div class="post-meta">
+            <span>Neelu S. Kalani</span>
+            <time datetime="2026-05-12">May 12, 2026</time>
+          </div>
+          <h2>
+            <a href="blog/why-context-switch-automation-is-required.html">
+              Why do we need automation for context switching?
+            </a>
+          </h2>
+          <p>
+            Context-switch code sits at a painful intersection: ISA complexity,
+            sparse documentation, and high security stakes. Sailor turns that
+            manual audit into a specification-driven analysis.
+          </p>
+          <a class="read-more" href="blog/why-context-switch-automation-is-required.html">Read more</a>
+        </article>
+
+        <article class="post-card">
+          <div class="post-meta">
+            <span>Neelu S. Kalani</span>
+            <time datetime="2026-05-12">May 12, 2026</time>
+          </div>
+          <h2>
+            <a href="blog/sail-and-isla-ecosystems.html">
+              Sail and Isla ecosystems
+            </a>
+          </h2>
+          <p>
+            Sail gives architecture specifications executable structure, while
+            Isla explores those specifications symbolically. Sailor builds on
+            both to reason about context-switch obligations.
+          </p>
+          <a class="read-more" href="blog/sail-and-isla-ecosystems.html">Read more</a>
+        </article>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>&copy; Neelu S. Kalani</p>
+    </footer>
+  </body>
+</html>

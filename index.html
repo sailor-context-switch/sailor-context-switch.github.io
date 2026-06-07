@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Sailor</title>
+    <link rel="icon" href="assets/sailor-logo.png" type="image/png">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header class="site-header hero-header">
+      <nav class="navbar" aria-label="Primary navigation">
+        <a class="brand" href="index.html" aria-label="Sailor home">
+          <img src="assets/sailor-logo.png" alt="" aria-hidden="true">
+          <span>Sailor</span>
+        </a>
+        <div class="nav-links">
+          <a aria-current="page" href="index.html">Home</a>
+          <a href="blog.html">Blog</a>
+          <a href="documentation.html">Documentation</a>
+          <a href="team.html">Team</a>
+        </div>
+      </nav>
+
+      <section class="hero">
+        <div class="hero-copy">
+          <div class="hero-logo-panel">
+            <img class="hero-logo" src="assets/sailor-logo.png" alt="Sailor project logo">
+          </div>
+          <div class="hero-text">
+            <p class="eyebrow">Secure context switching:<br>Leverages machine-readable ISA specifications written in Sail</p>
+            <h1>Sailor</h1>
+            <p class="tagline">
+              Automating the search for ISA state that privileged software must
+              save, restore, and protect across context switches.
+            </p>
+            <div class="hero-actions" aria-label="Publication links">
+              <a class="primary-action" href="https://www.usenix.org/conference/usenixsecurity25/presentation/kalani">USENIX Security '25 paper</a>
+              <a class="secondary-action" href="https://www.usenix.org/system/files/sec25_slides_kalani.pdf">Slides</a>
+              <a class="secondary-action" href="https://www.youtube.com/watch?v=ERQ8ONmYjck">Talk</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </header>
+
+    <main>
+      <section class="publication-band" aria-labelledby="publication-title">
+        <div class="section-shell publication-card">
+          <div class="publication-header">
+            <div class="publication-label">
+              <p class="section-kicker">Usenix Security 2025 Publication</p>
+              <p>A collaboration between EPFL and IBM Research.</p>
+            </div>
+            <div class="artifact-badges" aria-label="USENIX artifact badges">
+              <img src="https://secartifacts.github.io/images/usenixbadges-available.svg" alt="Artifacts Available">
+              <img src="https://secartifacts.github.io/images/usenixbadges-functional.svg" alt="Artifacts Functional">
+              <img src="https://secartifacts.github.io/images/usenixbadges-reproduced.svg" alt="Results Reproduced">
+            </div>
+          </div>
+          <h2 id="publication-title">Save what must be saved: Secure context switching with Sailor</h2>
+          <p>
+            Published at the 34th USENIX Security Symposium, Sailor shows how
+            machine-readable Sail ISA specifications and Isla symbolic execution
+            can expose security-sensitive architectural state that context-switch
+            code must handle correctly.
+          </p>
+          <div class="publication-actions">
+            <a class="read-more" href="https://www.usenix.org/conference/usenixsecurity25/presentation/kalani">Read the paper</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="benefit-band" aria-labelledby="benefits-title">
+        <div class="section-shell">
+          <p class="section-kicker">Guarantees</p>
+          <h2 id="benefits-title">Context switching with less manual inspection and guesswork</h2>
+          <div class="benefit-grid">
+            <article class="benefit-card">
+              <span class="icon-badge" aria-hidden="true">
+                <svg viewBox="0 0 24 24">
+                  <path d="M4 6h16"></path>
+                  <path d="M4 12h16"></path>
+                  <path d="M4 18h16"></path>
+                  <path d="M8 4v16"></path>
+                </svg>
+              </span>
+              <h3>Systematic ISA spec inspection</h3>
+              <p>Tracks registers and other ISA state affected by instructions, instead of relying on scattered prose.</p>
+            </article>
+            <article class="benefit-card">
+              <span class="icon-badge" aria-hidden="true">
+                <svg viewBox="0 0 24 24">
+                  <path d="M7 8l-4 4 4 4"></path>
+                  <path d="M17 8l4 4-4 4"></path>
+                  <path d="M14 4l-4 16"></path>
+                </svg>
+              </span>
+              <h3>Leverage symbolic execution</h3>
+              <p>Uses executable ISA models and symbolic execution to collect the state dependencies context switches care about.</p>
+            </article>
+            <article class="benefit-card">
+              <span class="icon-badge" aria-hidden="true">
+                <svg viewBox="0 0 24 24">
+                  <path d="M12 3l7 3v5c0 4.6-2.9 8.7-7 10-4.1-1.3-7-5.4-7-10V6l7-3z"></path>
+                  <path d="M8.8 12.1l2 2 4.6-5"></path>
+                </svg>
+              </span>
+              <h3>Found bugs in existing code</h3>
+              <p>Assesses real systems, including Linux and confidential-computing monitors, for mishandled ISA state.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="problem-band" aria-labelledby="problem-title">
+        <div class="section-shell problem-grid">
+          <article class="problem-card problem-card-dark">
+            <p class="section-kicker">The Problem</p>
+            <h2 id="problem-title">Implementing context switching correctly should not be difficult in 2025.</h2>
+            <p>
+              Modern ISAs have hundreds of registers and instructions whose
+              effects vary by execution. A missing save or restore step can let
+              state leak across processes, privilege domains, or enclaves.
+            </p>
+          </article>
+          <article class="problem-card problem-card-light">
+            <p class="section-kicker">Our Approach</p>
+            <h2>Sailor automatically identifies what context must be swapped.</h2>
+            <p>
+              Sailor analyzes machine-readable Sail ISA specifications with
+              Isla, then identifies the architectural state that context-switch
+              implementations must preserve to avoid subtle security failures.
+            </p>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>&copy; Neelu S. Kalani</p>
+    </footer>
+  </body>
+</html>

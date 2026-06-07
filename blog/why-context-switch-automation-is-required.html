@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Why do we need automation for context switching? | Sailor</title>
+    <link rel="icon" href="../assets/sailor-logo.png" type="image/png">
+    <link rel="stylesheet" href="../styles.css">
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="navbar" aria-label="Primary navigation">
+        <a class="brand" href="../index.html" aria-label="Sailor home">
+          <img src="../assets/sailor-logo.png" alt="" aria-hidden="true">
+          <span>Sailor</span>
+        </a>
+        <div class="nav-links">
+          <a href="../index.html">Home</a>
+          <a aria-current="page" href="../blog.html">Blog</a>
+          <a href="../documentation.html">Documentation</a>
+          <a href="../team.html">Team</a>
+        </div>
+      </nav>
+    </header>
+
+    <main class="subpage article-layout">
+      <article class="blog-post">
+        <a class="back-link" href="../blog.html">Back to blog</a>
+        <div class="post-meta">
+          <span>Neelu S. Kalani</span>
+          <time datetime="2026-05-12">May 12, 2026</time>
+        </div>
+        <h1>Why do we need automation for context switching?</h1>
+        <p>
+          Context switching looks like a bookkeeping task: save the old
+          execution context, restore the next one, and continue. The security
+          reality is sharper. If privileged software forgets a register or
+          mishandles a piece of architectural state, information can cross a
+          boundary it was never meant to cross.
+        </p>
+        <p>
+          The difficulty comes from the shape of modern ISAs. The relevant state
+          is not described in one clean checklist. Details about one register may
+          be split across instruction semantics, privilege-mode text, extension
+          chapters, and informal notes. Some instructions update state only under
+          particular conditions, and those conditions can depend on other state.
+        </p>
+
+        <figure class="switch-figure">
+          <svg viewBox="0 0 920 240" role="img" aria-labelledby="automation-figure-title automation-figure-desc">
+            <title id="automation-figure-title">Manual context-switch auditing versus Sailor</title>
+            <desc id="automation-figure-desc">A diagram showing ISA documentation and executable models feeding Sailor, which identifies state that must be saved.</desc>
+            <defs>
+              <marker id="arrow" markerHeight="8" markerWidth="8" orient="auto" refX="7" refY="4">
+                <path d="M0,0 L8,4 L0,8 Z" fill="#5c6678"></path>
+              </marker>
+            </defs>
+            <text x="460" y="34" class="figure-heading" text-anchor="middle">From scattered ISA behavior to context-switch obligations</text>
+            <rect x="52" y="74" width="816" height="112" rx="8" class="figure-panel"></rect>
+            <rect x="86" y="104" width="170" height="54" rx="6" class="gap-box"></rect>
+            <text x="171" y="126" text-anchor="middle">Manual audit</text>
+            <text x="171" y="144" text-anchor="middle">of ISA prose</text>
+            <line x1="256" y1="131" x2="326" y2="131" class="figure-arrow"></line>
+            <rect x="326" y="104" width="170" height="54" rx="6" class="model-box"></rect>
+            <text x="411" y="126" text-anchor="middle">Sail specs +</text>
+            <text x="411" y="144" text-anchor="middle">Isla traces</text>
+            <line x1="496" y1="131" x2="566" y2="131" class="figure-arrow"></line>
+            <rect x="566" y="104" width="268" height="54" rx="6" class="state-box"></rect>
+            <text x="700" y="126" text-anchor="middle">State that must be</text>
+            <text x="700" y="144" text-anchor="middle">saved and restored</text>
+            <text x="460" y="216" class="figure-note" text-anchor="middle">Automation makes the audit repeatable as specifications and implementations evolve.</text>
+          </svg>
+          <figcaption>Sailor replaces fragile manual enumeration with analysis driven by executable ISA semantics.</figcaption>
+        </figure>
+
+        <p>
+          That is why automation matters. A human reviewer can understand the
+          threat model, but asking humans to enumerate every possible
+          state-changing instruction path is brittle. Sailor starts from
+          machine-readable Sail specifications, uses Isla to explore instruction
+          behavior, and applies an algorithm to identify the ISA state that must
+          be swapped during context switches.
+        </p>
+        <p>
+          The complications are not abstract. Sailor was used to assess regular
+          process context switching in the RISC-V Linux kernel and enclave
+          context switching in Keystone and Komodo. In these settings, context
+          switching is part of the security boundary, so a small omission can
+          become an attack surface for unprivileged code.
+        </p>
+      </article>
+    </main>
+
+    <footer class="site-footer">
+      <p>&copy; Neelu S. Kalani</p>
+    </footer>
+  </body>
+</html>
